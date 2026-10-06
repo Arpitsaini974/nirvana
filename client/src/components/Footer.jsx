@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Phone } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import LotusLogo from './LotusLogo';
 import SvnitLogo from './SvnitLogo';
 
@@ -53,14 +53,25 @@ export default function Footer() {
 
         </div>
 
-        {/* Contact & SVNIT Location Strip */}
-        <div className="mt-8 pt-6 border-t border-[#382C24] flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#C4B5A5]">
-          <div className="flex items-center gap-2 text-center md:text-left">
+        {/* Contact, Email & SVNIT Location Strip */}
+        <div className="mt-8 pt-6 border-t border-[#382C24] flex flex-col lg:flex-row items-center justify-between gap-4 text-xs text-[#C4B5A5]">
+          <div className="flex items-center gap-2 text-center lg:text-left">
             <MapPin className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
             <span>SVNIT Campus, Ichchhanath, Surat, Gujarat &ndash; 395007</span>
           </div>
 
-          <div className="flex items-center gap-2 text-center md:text-right">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-center">
+            <Mail className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
+            <a href="mailto:nirvana@svnit.ac.in" className="text-[#FAF7F2] hover:text-[#D4A373] transition-colors font-medium">
+              nirvana@svnit.ac.in
+            </a>
+            <span className="text-[#5C4A3E]">&bull;</span>
+            <a href="mailto:Nirwana_chapter@svnit.ac.in" className="text-[#FAF7F2] hover:text-[#D4A373] transition-colors font-medium">
+              Nirwana_chapter@svnit.ac.in
+            </a>
+          </div>
+
+          <div className="flex items-center gap-2 text-center lg:text-right">
             <Phone className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
             <span className="text-[#8C7D70]">Contact:</span>
             <a href="tel:+918570897727" className="text-[#FAF7F2] hover:text-[#D4A373] transition-colors font-medium">

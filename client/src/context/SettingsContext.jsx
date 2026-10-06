@@ -4,19 +4,19 @@ const SettingsContext = createContext(null);
 
 export function SettingsProvider({ children }) {
   const [settings, setSettings] = useState({
-    club_name: 'Apex Robotics & Innovation Club',
-    tagline: 'Pioneering Automation, Applied AI & Engineering Excellence',
-    logo_url: '',
-    favicon_url: '',
+    club_name: 'NIRVANA',
+    tagline: 'LEARN • EXPLORE • GROW',
+    logo_url: '/images/nirvana/nirvana_logo.png',
+    favicon_url: '/favicon.svg',
     banner_url: '',
-    about: '',
+    about: 'NIRVANA is an official student initiative of SVNIT committed to social impact, education, community care, and youth empowerment.',
     history: '',
-    mission: '',
-    vision: '',
+    mission: 'To build sustainable bridges between academic institutions and underserved grassroots communities.',
+    vision: 'A society where every child and community member has access to quality education, healthcare, and growth opportunities.',
     objectives: [],
-    email: '',
-    phone: '',
-    address: '',
+    email: 'nirvana@svnit.ac.in',
+    phone: '+91 85708 97727 / +91 63774 13540',
+    address: 'SVNIT Campus, Ichchhanath, Surat, Gujarat - 395007',
     social_links: {}
   });
   const [loading, setLoading] = useState(true);
