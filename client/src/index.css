@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-[#FAF7F2] text-[#2B231D] antialiased font-sans selection:bg-[#E8DFD3] selection:text-[#2B231D];
+    min-height: 100vh;
+  }
+}
+
+/* Custom print styles for printing member ID and QR cards */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .printable-area, .printable-area * {
+    visibility: visible;
+  }
+  .printable-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
