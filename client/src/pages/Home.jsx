@@ -203,7 +203,7 @@ export default function Home() {
                     &ldquo;
                   </div>
                   <blockquote className="font-serif italic text-base sm:text-lg text-[#2B231D] leading-snug">
-                    Small steps of kindness, create big changes in the lives of many.
+                    Reason to smile
                   </blockquote>
                   <div className="mt-4 text-[11px] font-bold tracking-widest text-[#857467] uppercase">
                     &mdash; NIRVANA

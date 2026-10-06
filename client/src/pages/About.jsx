@@ -75,7 +75,7 @@ export default function About() {
               <div className="bg-[#F3ECE2] rounded-xl p-6 border border-[#E5DACB] shadow-2xs">
                 <div className="text-4xl font-serif text-[#D4A373] leading-none mb-2 select-none">&ldquo;</div>
                 <blockquote className="font-serif italic text-base sm:text-lg text-[#2B231D] leading-snug">
-                  Small steps of kindness, create big changes in the lives of many.
+                  Reason to smile
                 </blockquote>
                 <div className="mt-3 text-[11px] font-bold tracking-widest text-[#857467] uppercase">
                   &mdash; NIRVANA

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MapPin, Phone } from 'lucide-react';
 import LotusLogo from './LotusLogo';
 import SvnitLogo from './SvnitLogo';
 
@@ -52,8 +53,28 @@ export default function Footer() {
 
         </div>
 
+        {/* Contact & SVNIT Location Strip */}
+        <div className="mt-8 pt-6 border-t border-[#382C24] flex flex-col md:flex-row items-center justify-between gap-3 text-xs text-[#C4B5A5]">
+          <div className="flex items-center gap-2 text-center md:text-left">
+            <MapPin className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
+            <span>SVNIT Campus, Ichchhanath, Surat, Gujarat &ndash; 395007</span>
+          </div>
+
+          <div className="flex items-center gap-2 text-center md:text-right">
+            <Phone className="w-3.5 h-3.5 text-[#D4A373] shrink-0" />
+            <span className="text-[#8C7D70]">Contact:</span>
+            <a href="tel:+918570897727" className="text-[#FAF7F2] hover:text-[#D4A373] transition-colors font-medium">
+              +91 85708 97727
+            </a>
+            <span className="text-[#5C4A3E]">&bull;</span>
+            <a href="tel:+916377413540" className="text-[#FAF7F2] hover:text-[#D4A373] transition-colors font-medium">
+              +91 63774 13540
+            </a>
+          </div>
+        </div>
+
         {/* Discreet Sub-footer with Copyright & Admin Portal Link */}
-        <div className="mt-6 pt-4 border-t border-[#2E241D] flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#8C7D70] gap-2">
+        <div className="mt-5 pt-4 border-t border-[#2E241D] flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#8C7D70] gap-2">
           <span>&copy; {new Date().getFullYear()} NIRVANA Student Society, SVNIT Surat. All rights reserved.</span>
           <Link
             to="/admin/login"
