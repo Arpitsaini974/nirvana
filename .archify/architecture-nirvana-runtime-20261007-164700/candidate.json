@@ -1,0 +1,190 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Nirvana Club Platform - High-Level Runtime Architecture",
+    "output": ".archify/architecture-nirvana-runtime-20261007-164700/nirvana-runtime.html",
+    "quality_profile": "showcase",
+    "repository": {
+      "url": "https://github.com/Arpitsaini974/nirvana",
+      "provider": "github",
+      "revision": "77423b20f0469038c83cca9d10713a61fb7b4edc"
+    }
+  },
+  "components": [
+    {
+      "id": "browser",
+      "type": "external",
+      "label": "Client Devices",
+      "sublabel": "Desktop & Mobile Browsers",
+      "pos": [40, 260],
+      "size": [130, 60]
+    },
+    {
+      "id": "hostinger_alt",
+      "type": "cloud",
+      "label": "Hostinger Web (Alt)",
+      "sublabel": "Apache + PHP 8 + MySQL",
+      "sources": [
+        { "path": "public_html/index.html", "line": 1, "label": "Apache Root" }
+      ],
+      "pos": [450, 50],
+      "size": [140, 60]
+    },
+    {
+      "id": "vercel_cdn",
+      "type": "cloud",
+      "label": "Vercel Edge Platform",
+      "sublabel": "Static CDN & Edge Router",
+      "tag": "Global Edge",
+      "pos": [240, 260],
+      "size": [140, 60]
+    },
+    {
+      "id": "react_spa",
+      "type": "frontend",
+      "label": "React SPA",
+      "sublabel": "Vite 8 + Tailwind CSS v4",
+      "sources": [
+        { "path": "client/src/App.jsx", "line": 40, "label": "Client Router" }
+      ],
+      "pos": [450, 160],
+      "size": [140, 60]
+    },
+    {
+      "id": "vercel_proxy",
+      "type": "security",
+      "label": "Vercel Reverse Proxy",
+      "sublabel": "/api/* Rewrite Engine",
+      "sources": [
+        { "path": "vercel.json", "line": 5, "label": "API Proxy Rule" }
+      ],
+      "pos": [450, 360],
+      "size": [140, 60]
+    },
+    {
+      "id": "render_node",
+      "type": "backend",
+      "label": "Render Cloud Service",
+      "sublabel": "Express 5 Web Server :5000",
+      "sources": [
+        { "path": "server/index.js", "line": 10, "label": "Express Entrypoint" }
+      ],
+      "pos": [660, 360],
+      "size": [140, 60]
+    },
+    {
+      "id": "auth_service",
+      "type": "security",
+      "label": "Auth & Security",
+      "sublabel": "JWT Token & Bcrypt Hash",
+      "sources": [
+        { "path": "server/routes/auth.js", "line": 24, "label": "Auth Controller" }
+      ],
+      "pos": [660, 500],
+      "size": [140, 60]
+    },
+    {
+      "id": "api_routes",
+      "type": "backend",
+      "label": "Club Management APIs",
+      "sublabel": "Members, Alumni, Events, Media",
+      "sources": [
+        { "path": "server/routes/members.js", "line": 1, "label": "REST Routes" }
+      ],
+      "pos": [960, 360],
+      "size": [140, 60]
+    },
+    {
+      "id": "qr_engine",
+      "type": "backend",
+      "label": "QR Engine",
+      "sublabel": "Dynamic QR Generation",
+      "sources": [
+        { "path": "server/routes/certificates.js", "line": 1, "label": "QR Controller" }
+      ],
+      "pos": [960, 500],
+      "size": [140, 60]
+    },
+    {
+      "id": "sqlite_db",
+      "type": "database",
+      "label": "SQLite Database",
+      "sublabel": "better-sqlite3 WAL Mode",
+      "sources": [
+        { "path": "server/db.js", "line": 1, "label": "Database Connection" }
+      ],
+      "pos": [1260, 360],
+      "size": [140, 60]
+    },
+    {
+      "id": "media_storage",
+      "type": "database",
+      "label": "Media Storage",
+      "sublabel": "Local Disk /server/uploads",
+      "sources": [
+        { "path": "server/index.js", "line": 19, "label": "Uploads Directory" }
+      ],
+      "pos": [1260, 500],
+      "size": [140, 60]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Frontend Tier (Vercel Global Edge)",
+      "wraps": ["vercel_cdn", "react_spa", "vercel_proxy"]
+    },
+    {
+      "kind": "region",
+      "label": "Backend Application Tier (Render Cloud PaaS)",
+      "wraps": ["render_node", "api_routes", "auth_service", "qr_engine", "sqlite_db", "media_storage"]
+    },
+    {
+      "kind": "security-group",
+      "label": "Data & Asset Storage",
+      "wraps": ["sqlite_db", "media_storage"]
+    }
+  ],
+  "connections": [
+    { "from": "browser", "to": "vercel_cdn", "label": "HTTPS", "variant": "emphasis" },
+    { "from": "browser", "to": "hostinger_alt", "label": "Apache Hostinger", "variant": "dashed", "fromSide": "top", "toSide": "left" },
+    { "from": "vercel_cdn", "to": "react_spa", "label": "Static Bundle", "fromSide": "right", "toSide": "left" },
+    { "from": "react_spa", "to": "vercel_proxy", "label": "/api/* requests", "fromSide": "bottom", "toSide": "top" },
+    { "from": "vercel_proxy", "to": "render_node", "label": "Reverse Proxy", "variant": "emphasis" },
+    { "from": "render_node", "to": "auth_service", "label": "JWT Guard", "variant": "security", "fromSide": "bottom", "toSide": "top" },
+    { "from": "render_node", "to": "api_routes", "label": "Express Route Dispatch" },
+    { "from": "api_routes", "to": "sqlite_db", "label": "SQL Queries (WAL)", "variant": "emphasis" },
+    { "from": "api_routes", "to": "qr_engine", "label": "Generate ID / QR", "fromSide": "bottom", "toSide": "top" },
+    { "from": "api_routes", "to": "media_storage", "label": "Multer Uploads", "fromSide": "right", "toSide": "left" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "Frontend (Vercel Edge)",
+      "items": [
+        "React 19 Single Page App built with Vite 8 and Tailwind CSS v4",
+        "Vercel CDN serves static assets with global edge caching",
+        "vercel.json rewrites /api/* requests seamlessly to Render backend"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Backend Services (Render Cloud)",
+      "items": [
+        "Node.js + Express 5 REST API listening on port 5000",
+        "Modular route controllers for Members, Alumni, Professors, Events, and Messages",
+        "Dynamic QR verification service for certificates and member identity"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Security & Persistence",
+      "items": [
+        "JWT-based bearer token authentication with bcrypt password hashing",
+        "SQLite database (better-sqlite3) running in Write-Ahead Logging (WAL) mode",
+        "Multer-managed multipart media storage on local container volume"
+      ]
+    }
+  ]
+}

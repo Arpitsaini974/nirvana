@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "9cfb5735-841f-477e-937a-fd115c982537",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "C:\\Users\\DELL\\Desktop\\Collage\\.archify\\architecture-nirvana-runtime-20261007-164700\\candidate.json",
+  "output": "C:\\Users\\DELL\\Desktop\\Collage\\.archify\\architecture-nirvana-runtime-20261007-164700\\nirvana-runtime.html",
+  "specification": {
+    "sha256": "70c6e49ef41d57aeb432af0aba07f29d1b1a0038b9a27235cee94195ceb0ac51",
+    "bytes": 6282
+  },
+  "artifact": {
+    "sha256": "0c3fee8eefb2a19aff1d9c7a448f9f868b99f69efd58171ca4f4dd06394b8113",
+    "bytes": 771350
+  }
+}

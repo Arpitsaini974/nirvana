@@ -450,26 +450,6 @@ export default function AdminLogin() {
             </form>
           )}
 
-          {/* Quick Credential Guide Card */}
-          <div className="pt-4 border-t border-[#EFE7DE] bg-[#F7F2EA]/60 p-3.5 rounded-2xl border border-[#E5DACB] text-[11px] text-[#6B5A4E] space-y-1">
-            <div className="font-semibold text-[#2B231D] flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Configured Administrator Credentials:</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-1 text-[11px] mt-1 pt-1 border-t border-[#E5DACB]/50">
-              <div>
-                <span className="text-[#857467]">NIRVANA Admin:</span>
-                <p className="font-mono text-[#2B231D]">admin@nirvana.edu</p>
-                <p className="font-mono text-[#857467] text-[10px]">Pass: Admin@123</p>
-              </div>
-              <div>
-                <span className="text-[#857467]">Default Admin:</span>
-                <p className="font-mono text-[#2B231D]">admin@club.org</p>
-                <p className="font-mono text-[#857467] text-[10px]">Pass: admin123</p>
-              </div>
-            </div>
-          </div>
-
         </div>
 
         {/* Back Link to Main Website */}
